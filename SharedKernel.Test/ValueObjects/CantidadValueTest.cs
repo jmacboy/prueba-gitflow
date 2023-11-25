@@ -12,7 +12,7 @@ namespace SharedKernel.Test.ValueObjects
         [InlineData(10)]
         public void ValorMayorOIgualACero(int valorEsperado)
         {
-            
+
             CantidadValue valorAVerificar = new CantidadValue(valorEsperado);
 
             Assert.Equal(valorEsperado, valorAVerificar.Value);
