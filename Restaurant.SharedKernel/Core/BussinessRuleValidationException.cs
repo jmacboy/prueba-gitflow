@@ -18,10 +18,6 @@ public class BussinessRuleValidationException : Exception
         Details = brokenRule.Message;
     }
 
-    protected BussinessRuleValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
-    {
-    }
-
     public BussinessRuleValidationException(string message) : base(message)
     {
         Details = message;
