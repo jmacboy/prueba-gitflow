@@ -17,6 +17,10 @@ public class BussinessRuleValidationException : Exception
         BrokenRule = brokenRule;
         Details = brokenRule.Message;
     }
+    protected BussinessRuleValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
+    {
+        // Se usa cuando se hereda de la clase Exception y se serializa el objeto
+    }
 
     public BussinessRuleValidationException(string message) : base(message)
     {
