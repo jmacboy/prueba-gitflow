@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\Documents\prueba-gitflow\Restaurant.SharedKernel\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\Documents\prueba-gitflow\Restaurant.SharedKernel\.editorconfig" />
+  </ItemGroup>
+
 </Project>
