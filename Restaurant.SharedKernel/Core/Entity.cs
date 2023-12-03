@@ -2,36 +2,48 @@
 
 public abstract class Entity
 {
-    public Guid Id { get; protected set; }
+  public Guid Id { get; protected set; }
 
-    private readonly ICollection<DomainEvent> _domainEvents;
+  private readonly ICollection<DomainEvent> _domainEvents;
 
-    public ICollection<DomainEvent> DomainEvents { get { return _domainEvents; } }
+  public ICollection<DomainEvent> DomainEvents { get { return _domainEvents; } }
 
-    protected Entity()
+  protected Entity()
+  {
+    _domainEvents = new List<DomainEvent>();
+  }
+
+  public void AddDomainEvent(DomainEvent evento)
+  {
+    _domainEvents.Add(evento);
+  }
+
+  public void ClearDomainEvents()
+  {
+    _domainEvents.Clear();
+  }
+
+  protected void CheckRule(IBussinessRule rule)
+  {
+    if (rule is null)
     {
-        _domainEvents = new List<DomainEvent>();
+      throw new ArgumentException("Rule cannot be null");
     }
-
-    public void AddDomainEvent(DomainEvent evento)
+    if (!rule.IsValid())
     {
-        _domainEvents.Add(evento);
+      throw new BussinessRuleValidationException(rule);
     }
-
-    public void ClearDomainEvents()
+    if (rule is null)
     {
-        _domainEvents.Clear();
+      throw new ArgumentException("Rule cannot be null");
     }
-
-    protected void CheckRule(IBussinessRule rule)
+    if (rule is null)
     {
-        if(rule is null)
-        {
-            throw new ArgumentException("Rule cannot be null");
-        }
-        if (!rule.IsValid())
-        {
-            throw new BussinessRuleValidationException(rule);
-        }
+      throw new ArgumentException("Rule cannot be null");
     }
+    if (!rule.IsValid())
+    {
+      throw new BussinessRuleValidationException(rule);
+    }
+  }
 }
