@@ -30,6 +30,7 @@ public class BussinessRuleValidationException : Exception
   public override string ToString()
   {
     string name = BrokenRule is null ? "BussinessRule" : BrokenRule.GetType().FullName;
+    name = name;
     return $"{ name }: { Details } ";
   }
 }
